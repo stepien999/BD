@@ -1,4 +1,4 @@
-package com.bd.serwis;
+package com.bd.serwis.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
