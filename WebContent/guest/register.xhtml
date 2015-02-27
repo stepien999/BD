@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<h:panelGroup layout="block" id="contentBox">
+				<h:panelGroup class="left" layout="block">
+					<p:messages />
+					<h1>Nie masz konta? Zarejestruj sie:</h1>
+					<h:form id="rejestracja">
+						<h:outputLabel for="">E-mail:</h:outputLabel>
+						<br />
+						<h:inputText id="login" styleClass="login odstepy"
+							value="#{userController.user.email}">
+							<f:validator
+								validatorId="com.bd.serwis.validation.EmailValidator" />
+						</h:inputText>
+						<br />
+						<br />
+						<h:outputLabel for="">Hasło:</h:outputLabel>
+						<br />
+						<h:inputSecret id="pass" styleClass="pass odstepy"
+							value="#{userController.user.password}">
+							<f:validator
+								validatorId="com.bd.serwis.validation.PasswordValidator" />
+						</h:inputSecret>
+						<br />
+						<br />
+						<h:outputLabel for="">Imie:</h:outputLabel>
+						<br />
+						<h:inputText id="imie" styleClass="imie odstepy"
+							value="#{userController.user.firstName}">
+							<f:validator validatorId="com.bd.serwis.validation.NameValidator" />
+						</h:inputText>
+						<br />
+						<br />
+						<h:outputLabel for="">Nazwisko:</h:outputLabel>
+						<br />
+						<h:inputText id="nazwisko" styleClass="nazwisko odstepy"
+							value="#{userController.user.lastName}">
+							<f:validator validatorId="com.bd.serwis.validation.NameValidator" />
+						</h:inputText>
+						<br />
+						<br />
+						<h:outputLabel for="">Numer telefonu (000-000-000 lub 000000000):</h:outputLabel>
+						<br />
+						<h:inputText id="telefon" styleClass="nazwisko odstepy"
+							value="#{userController.user.phoneNumber}">
+							<f:validator
+								validatorId="com.bd.serwis.validation.PhoneNumberValidator" />
+						</h:inputText>
+						<br />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<p:outputLabel for="console" value="Miasto:" />
+							<p:selectOneRadio id="console"
+								value="#{userController.user.city}">
+								<f:selectItem itemValue="Poznań" itemLabel="Poznań" />
+								<f:selectItem itemValue="Warszawa" itemLabel="Warszawa" />
+								<f:selectItem itemValue="Wrocław" itemLabel="Wrocław" />
+								<f:selectItem itemValue="Gdańsk" itemLabel="Gdańsk" />
+								<f:selectItem itemValue="Łódź" itemLabel="Łódź" />
+								<f:selectItem itemValue="Kraków" itemLabel="Kraków" />
+							</p:selectOneRadio>
+						</h:panelGrid>
+
+						<br />
+						<h:commandButton value="Utworz konto"
+							action="#{userController.saveUser}" />
+					</h:form>
+				</h:panelGroup>
+
+
+			</h:panelGroup>
+
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

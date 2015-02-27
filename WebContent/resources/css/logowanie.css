@@ -1,0 +1,26 @@
+#contentBox {
+   
+    
+    width: auto;
+    /*height: 600px;*/
+    /*overflow: visible;*/
+}
+
+
+
+#contentBox .right {
+    float: right;
+    width: 450px;
+    padding: 10px;
+    min-height: 20px;
+    background-color: #c7e9d0;
+}
+
+ #contentBox .left {
+    
+    margin-right: 470px;
+    min-height: 20px;
+    padding: 10px;
+    /*height: 500px;*/
+    /*background-color: blue;*/
+}

@@ -1,0 +1,11 @@
+#kategorie {
+    margin: 30px;
+}
+
+.kategoria {
+    width: 180px;
+    height: 110px;
+    background-color: #FFFFFF;
+    margin: 20px;
+    text-align: center;
+}

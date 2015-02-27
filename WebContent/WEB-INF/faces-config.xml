@@ -1,8 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_user_registration</from-outcome>
+			<to-view-id>/guest/register.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_announcements_by_city_and_category</from-outcome>
+			<to-view-id>/user/announcements/see_announcements_by_city_and_category.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_user_login</from-outcome>
+			<to-view-id>/guest/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_send_message</from-outcome>
+			<to-view-id>/user/messages/create_new_message.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>logout_success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/admin/category/see_categories.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_edit_category</from-outcome>
+			<to-view-id>/admin/category/edit_category.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_homepage</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_to_messages</from-outcome>
+			<to-view-id>/user/messages/received_messages.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/messages/received_messages.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_to_sent_messages</from-outcome>
+			<to-view-id>/user/messages/sent_messages.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_to_messages</from-outcome>
+			<to-view-id>/user/messages/received_messages.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_create_announcement</from-outcome>
+			<to-view-id>/user/announcements/add_announcement.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_see_user_announcements</from-outcome>
+			<to-view-id>/user/announcements/user_announcements.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_edit_user_profile</from-outcome>
+			<to-view-id>/user/edit_user.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_see_unaccepted_announcements</from-outcome>
+			<to-view-id>/admin/announcements/see_announcements.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_category_creation</from-outcome>
+			<to-view-id>/admin/category/add_category.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_announcements_by_category</from-outcome>
+			<to-view-id>/guest/see_announcements.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_see_announcement_page</from-outcome>
+			<to-view-id>/guest/see_announcement.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_see_announcement_page</from-outcome>
+			<to-view-id>/guest/see_announcement.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_manage_categories</from-outcome>
+			<to-view-id>/admin/category/see_categories.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>see_all_users</from-outcome>
+			<to-view-id>/admin/users/see_users.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_search_results</from-outcome>
+			<to-view-id>/guest/see_announcements_by_tags.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>see_all_users</from-outcome>
+			<to-view-id>/admin/users/see_users.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/announcements/add_announcement.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>announcement_save_success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/announcements/edit_announcement.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edit_announcement_success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/announcements/edit_announcement.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>delete_announcement_success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/announcements/user_announcements.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_edit_announcement</from-outcome>
+			<to-view-id>/user/announcements/edit_announcement.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/announcements/*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_see_announcement</from-outcome>
+			<to-view-id>/user/announcements/see_announcement.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/category/*</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_announcement_by_category</from-outcome>
+			<to-view-id>/user/announcements/see_announcements_by_category.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/user/announcements/see_announcements</from-view-id>
+		<navigation-case>
+			<from-outcome>redirect_see_announcement_city_category</from-outcome>
+			<to-view-id>/user/announcements/see_announcements_by_category.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/guest/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failed</from-outcome>
+			<to-view-id>/guest/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+			<h:form>
+				<h:commandButton value="Usuń ogłoszenie"
+					action="#{announcementController.deleteAnnouncement}" />
+			</h:form>
+		</ui:define>
+
+		<ui:define name="content">
+			<p:messages />
+			<h1>Edytuj ogłoszenie:</h1>
+			<h:form id="formularz">
+				<h:outputLabel for="">Tytuł:</h:outputLabel>
+				<br />
+				<h:inputText id="tytul" styleClass="tytul odstepy"
+					value="#{announcementController.announcement.title}">
+					<f:validator
+						validatorId="com.bd.serwis.validation.AnnouncementTitleValidator" />
+				</h:inputText>
+				<br />
+				<br />
+
+				<h:outputLabel for="">Treść:</h:outputLabel>
+				<br />
+				<h:inputTextarea cols="50" rows="50" id="opis"
+					styleClass="opis odstepy"
+					value="#{announcementController.announcement.content}">
+					<f:validator
+						validatorId="com.bd.serwis.validation.AnnouncementContentValidator" />
+				</h:inputTextarea>
+				<br />
+				<br />
+
+				<h:commandButton value="Edytuj ogłoszenie"
+					action="#{announcementController.updateAnnouncement}" />
+
+			</h:form>
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

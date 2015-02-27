@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<p:messages />
+			<h1>Kategorie ogłoszeń:</h1>
+			<h:form>
+
+				<ui:repeat value="#{categoryController.parentCategories}"
+					var="category">
+					<li><h:outputText value="#{category.categoryName}" />
+						<h:commandLink
+							action="#{categoryController.editCategory(category)}"
+							value=" Edytuj" />
+						<hr align="left" width="15%" /></li>
+					<ul class="menu2">
+						<ui:repeat
+							value="#{categoryController.categoriesByParent(category)}"
+							var="category">
+							<li>+ <h:outputText value="#{category.categoryName}" />
+								<h:commandLink
+									action="#{categoryController.editCategory(category)}"
+									value="Edytuj" /></li>
+						</ui:repeat>
+					</ul>
+				</ui:repeat>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

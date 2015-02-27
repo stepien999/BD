@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+			<!-- tutaj mozna wpisac co co ma byc na gorze -->
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<div>
+				<p:messages />
+				<div id="content_w_stronie" class="right">
+
+					<h:form rendered ="#{userController.userLoggedIn}">
+						<div class="poPrawej okraglaRamka">
+							<!--<img src="/images/mail.png" />-->
+							<h:graphicImage style="vertical-align: middle;"
+								value="/images/mail.png" />
+							<h:commandLink value=" Napisz wiadomość"
+								action="#{messageController.createMessage(announcementController.announcement.user)}" />
+						</div>
+					</h:form>
+					
+					<h:form rendered ="#{not userController.userLoggedIn}">
+						<div class="poPrawej okraglaRamka">
+							<!--<img src="/images/mail.png" />-->
+							<h:graphicImage style="vertical-align: middle;"
+								value="/images/mail.png" />
+							<h:outputText value="Zaloguj się"/>
+						</div>
+					</h:form>
+					
+					<div class="poPrawej okraglaRamka">
+						<h:graphicImage style="vertical-align: middle;"
+							value="/images/telefon.png" />
+						<h:outputText
+							value="#{announcementController.announcement.user.phoneNumber}" />
+					</div>
+					<div class="adres okraglaRamka">
+						<h:graphicImage style="vertical-align: middle;"
+							value="/images/lokalizacja.png" />
+						<h:outputText
+							value="#{announcementController.announcement.user.city}" />
+					</div>
+
+					<div class="sprzedajacy okraglaRamka">
+						Sprzedajacy:
+						<h:outputText
+							value="#{announcementController.announcement.user.firstName}" />
+						<br />
+					</div>
+				</div>
+
+
+
+
+				<div id="content_w_stronie" class="left">
+					<!-- tytul ogloszenia-->
+					<h1 class="tytul">
+						<h:outputText value="#{announcementController.announcement.title}" />
+					</h1>
+					<br />
+					<div class="podTytulem">
+						<h:graphicImage class="lokalizacja"
+							value="/images/lokalizacja.png" />
+
+						<h:outputText
+							value="#{announcementController.announcement.user.city}" />
+						| Dodane:
+						<h:outputText
+							value="#{announcementController.announcement.dateOfAdding}" />
+						<br />
+					</div>
+					<div class="opis">
+						<h:dataTable value="" var="">
+							<ui:repeat value="#{announcementController.announcementImages}"
+								var="image">
+								<h:column>
+									<h:graphicImage class="przedmiot" value="image" width="200"
+										height="200" />
+								</h:column>
+							</ui:repeat>
+
+						</h:dataTable>
+						<p>
+							<h:outputText
+								value="#{announcementController.announcement.content}" />
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+
+
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

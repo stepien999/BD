@@ -1,0 +1,79 @@
+#stronaUsera {
+    width: auto;
+}
+
+#stronaUsera .obrazekUser {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 15px;
+}
+
+#stronaUsera h1 {
+}
+
+#stronaUsera h2 {
+
+}
+
+#stronaUsera .informacje {
+    /*float: left;*/
+    margin: 0px;
+}
+
+#stronaUsera .informacjePrawo {
+    float: right;
+    width: 250px;
+    padding: 10px;
+    min-height: 20px;
+/*    background-color: green;*/
+}
+
+#stronaUsera .informacjeLewo {
+    
+    margin-right: 270px;
+    padding: 10px;
+    
+/*    background-color: blue;*/
+}
+
+
+
+#right .cena {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#right .poPrawej {
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+#right .adres {
+    height: 80px;
+    line-height: 80px;
+}
+
+#right .sprzedajacy {
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+#right .okraglaRamka {
+    margin: 10px;
+    
+    border: 0px;
+    border-color: #ece3a5;
+    border-radius: 15px;
+    background-color: #ece3a5;
+    
+    width: 240px;
+    
+    
+    text-align: center;
+    
+}

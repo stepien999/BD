@@ -1,0 +1,30 @@
+#formularz {
+    padding: 10px;
+}
+
+#logowaniee {
+    padding: 10px;
+}
+
+.odstepy {
+    padding: 5px;
+    margin: 5px;
+}
+
+#formularz .tytul {
+    width: 500px;
+}
+
+#formularz .cena {
+    width: 100px;
+}
+
+#formularz .opis {
+    width: 600px;
+    height: 400px; 
+}
+
+#formularz .kategoria {
+    width: 150px;
+    height: 40px; 
+}

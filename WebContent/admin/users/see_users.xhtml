@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+	<h:outputStylesheet library="css" name="listaPrzedmiotow.css" />
+
+
+	<ui:define name="top">
+
+	</ui:define>
+
+	<ui:define name="left">
+
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<ui:repeat value="#{userController.allUsers}" var="user">
+
+				<div id="przedmiot">
+					<div class="box1">
+						<div class="tytul">
+							<div class="tytulikategoria doSrodkowania">
+								<div class="centered">
+									<h:outputText value="#{user.firstName} " />
+									<h:outputText value="#{user.lastName} " />
+									<h:outputText value="#{user.email} " />
+									<h:commandLink action="#{userController.giveAdminRights(user)}"
+										value="Ustaw admina " />
+									<h:commandLink action="#{userController.giveCommonRights(user)}"
+										value=" Odbierz admina" />
+									<br />
+									<h:outputText value="#{announcement.category.categoryName}" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ui:repeat>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="bottom">
+
+
+
+	</ui:define>
+</ui:composition>

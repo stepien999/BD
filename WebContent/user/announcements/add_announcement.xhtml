@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<p:messages />
+			<h1>Dodaj nowe ogłoszenie:</h1>
+			<h:form id="formularz">
+				<h:outputLabel for="">Tytul:</h:outputLabel>
+				<br />
+				<h:inputText id="tytul" styleClass="tytul odstepy"
+					value="#{announcementController.announcement.title}">
+					<f:validator
+						validatorId="com.bd.serwis.validation.AnnouncementTitleValidator" />
+				</h:inputText>
+				<br />
+				<br />
+				<h:outputLabel for="">Wybierz kategorię:</h:outputLabel>
+				<br />
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<p:selectOneMenu value="#{announcementController.categoryId}">
+						<f:selectItems value="#{categoryController.allCategories}"
+							var="category" itemValue="#{category.categoryId}"
+							itemLabel="#{category.categoryName}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+
+				<br />
+				<br />
+
+				<h:outputLabel for="">Treść:</h:outputLabel>
+				<br />
+				<p:inputTextarea rows="5" cols="30" counter="display"
+					maxlength="1500" counterTemplate="{0} characters remaining."
+					autoResize="false"
+					value="#{announcementController.announcement.content}" />
+				<h:outputText id="display" />
+
+				<br />
+				<br />
+
+				<h:outputLabel for="">Tagi:</h:outputLabel>
+				<br />
+				<h:form>
+					<p:inputTextarea rows="6" cols="33"
+						value="#{announcementController.announcement.tagExpression}">
+
+						<f:validator
+							validatorId="com.bd.serwis.validation.TagNameValidator" />
+					</p:inputTextarea>
+				</h:form>
+				<br />
+				<br />
+				<h:outputLabel for="">Zdjecia:</h:outputLabel>
+				<br />
+				<h:form enctype="multipart/form-data">
+					<p:fileUpload id="upload"
+						fileUploadListener="#{announcementController.fileUploadAction}"
+						mode="advanced" multiple="true" sizeLimit="65535" fileLimit="3"
+						allowTypes="/(\.|\/)(jpe?g|bmp|png)$/"
+						fileLimitMessage="Maksymalna ilość plików to 3" />
+
+				</h:form>
+				<p:growl id="messages" showDetail="true" />
+
+				<h:commandLink value="Dodaj ogłoszenie"
+					action="#{announcementController.saveAnnouncement(userController.loggedUser)}" />
+			</h:form>
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<h:panelGroup layout="block" id="contentBox">
+				<p:messages />
+				<h:panelGroup layout="block" class="left"
+					rendered="#{not userController.userLoggedIn}">
+
+					<h1>Masz juz konto? Zaloguj się:</h1>
+					<br />
+					<h:form id="logowanie">
+						<h:outputLabel for="">Email:</h:outputLabel>
+						<br />
+						<h:inputText id="login" styleClass="login odstepy"
+							value="#{userController.user.email}">
+							<f:validator
+								validatorId="com.bd.serwis.validation.EmailValidator" />
+						</h:inputText>
+
+						<br />
+						<br />
+						<h:outputLabel for="">Hasło:</h:outputLabel>
+						<br />
+						<h:inputSecret id="pass" styleClass="pass odstepy"
+							value="#{userController.user.password}" />
+
+						<br />
+						<br />
+						<h:commandButton value="Loguj"
+							action="#{userController.loginUser}" id="loginButton" />
+					</h:form>
+				</h:panelGroup>
+
+				<h:panelGroup layout="block" class="left"
+					rendered="#{userController.userLoggedIn}">
+					<h1>Jesteś już zalogowany</h1>
+					Adres email: <h:outputText
+						value="#{userController.loggedUser.email}" />
+					<br />
+					Imię: <h:outputText value="#{userController.loggedUser.firstName}" />
+					<br />
+					Nazwisko: <h:outputText
+						value="#{userController.loggedUser.lastName}" />
+					<br />
+					Miasto: <h:outputText value="#{userController.loggedUser.city}" />
+					<br />
+					Numer telefonu: <h:outputText
+						value="#{userController.loggedUser.phoneNumber}" />
+					<br />
+				</h:panelGroup>
+
+			</h:panelGroup>
+
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

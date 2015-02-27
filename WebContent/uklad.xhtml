@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet name="./css/default.css" />
+	<h:outputStylesheet name="./css/cssLayout.css" />
+	<h:outputStylesheet name="./css/stronaPrzedmiotu.css" />
+	<h:outputStylesheet name="./css/listaPrzedmiotow.css" />
+	<h:outputStylesheet name="./css/dodajPrzedmiot.css" />
+	<h:outputStylesheet name="./css/stronaUsera.css" />
+	<h:outputStylesheet name="./css/logowanie.css" />
+	<h:outputStylesheet name="./css/kategorie.css" />
+	<title>Serwis Ogłoszeń</title>
+</h:head>
+
+<h:body>
+
+	<div id="top">
+		<ui:insert name="top" />
+		<p class="top_content">
+			<h:form>
+			<p:messages/>
+				<h:inputText id="login" styleClass="login odstepy"
+					value="#{announcementController.tagExpression}" width="30%">
+					<f:validator
+						validatorId="com.bd.serwis.validation.TagNameValidator" />
+				</h:inputText>
+				<h:commandButton value="Szukaj"
+					action="#{announcementController.searchByTags}" />
+			</h:form>
+		</p>
+	</div>
+	<div>
+		<div id="left">
+			<!-- tu sie wkleja menu, to co po lewej -->
+			<ui:insert name="left" />
+
+			<h:form rendered="#{not userController.userLoggedIn}">
+				<h:commandLink value="Strona główna"
+					action="#{userController.redirectHomePage}" />
+				<br />
+
+				<h:commandLink value="Zarejestruj się"
+					action="#{userController.createUser}" />
+
+				<br />
+				<h:commandLink value="Zaloguj się"
+					action="#{userController.redirectUserLogin}" />
+
+			</h:form>
+
+			<h:form rendered="#{userController.userLoggedIn}">
+				<h:commandLink value="Strona główna"
+					action="#{userController.redirectHomePage}" />
+				<br />
+				<br />
+				<h:commandLink value="Skrzynka odbiorcza"
+					action="#{messageController.redirectToMessages}" />
+				<br />
+				<br />
+				<h:commandLink value="Dodaj ogłoszenie"
+					action="#{announcementController.createAnnouncement}" />
+				<br />
+				<br />
+				<h:commandLink value="Moje ogłoszenia"
+					action="#{announcementController.seeUserAnnouncements}" />
+				<br />
+				<br />
+				<h:commandLink value="Edytuj profil"
+					action="#{userController.redirectEditProfile}" />
+				<br />
+				<br />
+				<h:commandLink value="Wyloguj" action="#{userController.logout}" />
+			</h:form>
+
+			<h:form rendered="#{userController.adminLoggedIn}">
+				<hr />
+				<h:commandLink value="Niezaakceptowane ogłoszenia"
+					action="#{announcementController.seeUnacceptedAnnouncements}" />
+				<br />
+				<br />
+				<h:commandLink value="Dodaj kategorię"
+					action="#{categoryController.createCategory}" />
+				<br />
+				<br />
+				<h:commandLink value="Zarządzaj kategoriami"
+					action="#{categoryController.redirectManageCategories}" />
+				<br />
+				<br />
+				<h:commandLink value="Zarządzaj użytkownikami"
+					action="#{userController.seeAllUsers}" />
+				<br />
+				<br />
+			</h:form>
+		</div>
+		<div id="content">
+			<!-- tu sie wkleja srodek - tresc -->
+			<ui:insert name="content" />
+		</div>
+	</div>
+	<div id="bottom">
+		<ui:insert name="bottom" />
+		<!-- tu sie wkleja stopka 
+            ale wpisuje ja tutaj zeby byla na kazdej podstronie-->
+		All rights reserved.
+	</div>
+
+</h:body>
+
+</html>

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<body>
+
+	<ui:composition
+		template="#{pageContext.request.contextPath}/uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<p:messages />
+			<h1>Dodaj nową kategorię:</h1>
+			<h:form id="formularz">
+				<h:outputLabel for="">Nazwa:</h:outputLabel>
+				<br />
+				<h:inputText id="tytul" styleClass="tytul odstepy"
+					value="#{categoryController.category.categoryName}">
+					<f:validator
+						validatorId="com.bd.serwis.validation.CategoryNameValidator" />
+				</h:inputText>
+				<br />
+				<br />
+
+				<h:outputLabel for="">Opis:</h:outputLabel>
+				<br />
+				<h:inputTextarea cols="30" rows="10" id="opis"
+					styleClass="opis odstepy"
+					value="#{categoryController.category.description}">
+					<f:validator
+						validatorId="com.bd.serwis.validation.CategoryDescriptionValidator" />
+				</h:inputTextarea>
+				<br />
+
+				<h:outputLabel for="">Wybierz kategorię główną:</h:outputLabel>
+				<br />
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<p:selectOneMenu value="#{categoryController.categoryId}">
+						<f:selectItem itemLabel="-----------" itemValue="1000000000" />
+						<f:selectItems value="#{categoryController.parentCategories}"
+							var="category" itemValue="#{category.categoryId}"
+							itemLabel="#{category.categoryName}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+				<br />
+
+				<h:commandButton value="Dodaj kategorię"
+					action="#{categoryController.saveCategory}" />
+
+			</h:form>
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>

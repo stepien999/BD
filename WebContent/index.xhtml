@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<body>
+
+	<ui:composition template="./uklad.xhtml">
+
+		<ui:define name="top">
+
+		</ui:define>
+
+		<ui:define name="left">
+
+		</ui:define>
+
+		<ui:define name="content">
+			<h:form rendered="#{userController.userLoggedIn}">
+				<h1>
+					Kategorie ogłoszeń: Ogłoszenia z miasta
+					<h:outputText value="#{userController.loggedUser.city}" />
+				</h1>
+
+				<ui:repeat value="#{categoryController.parentCategories}"
+					var="category">
+					<li><h:commandLink
+							action="#{announcementController.seeAnnouncementsByCityAndCategory(category)}"
+							value="#{category.categoryName}" /></li>
+					<ul class="menu2">
+						<ui:repeat
+							value="#{categoryController.categoriesByParent(category)}"
+							var="category">
+							<li>+ <h:commandLink
+									action="#{announcementController.seeAnnouncementsByCityAndCategory(category)}"
+									value="#{category.categoryName}" /></li>
+						</ui:repeat>
+					</ul>
+				</ui:repeat>
+			</h:form>
+
+			<h:form rendered="#{not userController.userLoggedIn}">
+				<h1>Kategorie ogłoszeń:</h1>
+
+				<ui:repeat value="#{categoryController.parentCategories}"
+					var="category">
+					<li><h:commandLink
+							action="#{announcementController.seeAnnouncementsByCategory(category)}"
+							value="#{category.categoryName}" /></li>
+					<ul class="menu2">
+						<ui:repeat
+							value="#{categoryController.categoriesByParent(category)}"
+							var="category">
+							<li>+ <h:commandLink
+									action="#{announcementController.seeAnnouncementsByCategory(category)}"
+									value="#{category.categoryName}" /></li>
+						</ui:repeat>
+					</ul>
+				</ui:repeat>
+			</h:form>
+
+		</ui:define>
+
+		<ui:define name="bottom">
+
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>
